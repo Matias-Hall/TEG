@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<World>
+  <Continent Name="Africa" Bonus="3" >
+    <Country Name="Egypt" Neighbors="Sahara,Ethiopia,Madagascar,Israel,Turkey,Poland"/>
+    <Country Name="Ethiopia" Neighbors="Egypt,Sahara,Zaire,South Africa"/>
+    <Country Name="Madagascar" Neighbors="Egypt,Zaire"/>
+    <Country Name="Sahara" Neighbors="Egypt,Ethiopia,Zaire,Spain,Brazil"/>
+    <Country Name="South Africa" Neighbors="Zaire,Ethiopia"/>
+    <Country Name="Zaire" Neighbors="Sahara,Ethiopia,South Africa,Madagascar"/>
+  </Continent>
+  <Continent Name="Asia" Bonus="7" >
+    <Country Name="Arabia" Neighbors="Israel,Turkey"/>
+    <Country Name="Aral" Neighbors="Tartary,Siberia,Iran,Russia"/>
+    <Country Name="China" Neighbors="Kamchatka,Japan,Siberia,Mongolia,Gobi,Iran,India,Malaysia"/>
+    <Country Name="Gobi" Neighbors="Mongolia,China,Iran"/>
+    <Country Name="India" Neighbors="Iran,China,Malaysia,Sumatra"/>
+    <Country Name="Iran" Neighbors="Aral,Mongolia,Gobi,China,India,Turkey,Russia"/>
+    <Country Name="Israel" Neighbors="Turkey,Arabia,Egypt"/>
+    <Country Name="Japan" Neighbors="Kamchatka,China"/>
+    <Country Name="Kamchatka" Neighbors="Japan,China,Siberia,Alaska"/>
+    <Country Name="Malaysia" Neighbors="China,India,Borneo"/>
+    <Country Name="Mongolia" Neighbors="Iran,Siberia,China,Gobi"/>
+    <Country Name="Siberia" Neighbors="Aral,Tartary,Taymyr,Kamchatka,China,Mongolia"/>
+    <Country Name="Tartary" Neighbors="Aral,Taymyr,Siberia"/>
+    <Country Name="Taymyr" Neighbors="Tartary,Siberia"/>
+    <Country Name="Turkey" Neighbors="Iran,Arabia,Israel,Poland,Russia,Egypt"/>
+  </Continent>
+  <Continent Name="Europe" Bonus="5" >
+    <Country Name="France" Neighbors="Spain,Italy,Germany"/>
+    <Country Name="Germany" Neighbors="France,Italy,Poland,Great Britain"/>
+    <Country Name="Great Britain" Neighbors="Spain,Germany,Iceland"/>
+    <Country Name="Iceland" Neighbors="Great Britain,Sweden,Greenland"/>
+    <Country Name="Italy" Neighbors="France,Germany"/>
+    <Country Name="Poland" Neighbors="Germany,Russia,Turkey,Egypt"/>
+    <Country Name="Russia" Neighbors="Sweden,Poland,Aral,Iran,Turkey"/>
+    <Country Name="Spain" Neighbors="Sahara,Great Britain,France"/>
+    <Country Name="Sweden" Neighbors="Iceland,Russia"/>
+  </Continent>
+  <Continent Name ="North America" Bonus="0" >
+    <Country Name="Alaska" Neighbors="Yukon,Oregon,Japan"/>
+    <Country Name="California" Neighbors="Oregon,New York,Mexico"/>
+    <Country Name="Canada" Neighbors="Yukon,Oregon,New York,Terranova"/>
+    <Country Name="Greenland" Neighbors="Labrador,New York,Iceland"/>
+    <Country Name="Labrador" Neighbors="Greenland,Terranova"/>
+    <Country Name="Mexico" Neighbors="California,Colombia"/>
+    <Country Name="New York" Neighbors="Terranova,Canada,Oregon,California,Greenland"/>
+    <Country Name="Oregon" Neighbors="Alaska,Yukon,Canada,New York,California"/>
+    <Country Name="Terranova" Neighbors="Canada,New York,Labrador"/>
+    <Country Name="Yukon" Neighbors="Alaska,Oregon,Canada"/>
+  </Continent>
+  <Continent Name="Oceania" Bonus="2" >
+    <Country Name="Sumatra" Neighbors="India,Australia"/>
+    <Country Name="Borneo" Neighbors="Malaysia,Australia"/>
+    <Country Name="Java" Neighbors="Australia"/>
+    <Country Name="Australia" Neighbors="Sumatra,Borneo,Java,Chile"/>
+  </Continent>
+  <Continent Name="South America" Bonus="3" >
+    <Country Name="Argentina" Neighbors="Chile,Peru,Brazil,Uruguay"/>
+    <Country Name="Brazil" Neighbors="Peru,Colombia,Uruguay,Argentina,Sahara"/>
+    <Country Name="Peru" Neighbors="Colombia,Brazil,Argentina,Chile"/>
+    <Country Name="Colombia" Neighbors="Mexico,Brazil,Peru"/>
+    <Country Name="Chile" Neighbors="Peru,Argentina,Australia"/>
+    <Country Name="Uruguay" Neighbors="Brazil,Argentina"/>
+  </Continent>
+</World>

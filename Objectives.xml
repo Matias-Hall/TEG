@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Objectives>
+  <Objective Type="Common">
+    <Target Number="30"/>
+  </Objective>
+  <Objective Type="Occupy">
+    <Target Continent="Africa" Number="-1"/>
+    <Target Continent="North America" Number="5"/>
+    <Target Continent="Europe" Number="4"/>
+  </Objective>
+  <Objective Type="Occupy">
+    <Target Continent="South America" Number="-1"/>
+    <Target Continent="Europe" Number="7"/>
+    <Target Continent="Asia" Number="3"/>
+  </Objective>
+  <Objective Type="Occupy">
+    <Target Continent="Asia" Number="-1"/>
+    <Target Continent="South America" Number="2"/>
+  </Objective>
+  <Objective Type="Occupy">
+    <Target Continent="Europe" Number="-1"/>
+    <Target Continent="Asia" Number="4"/>
+    <Target Continent="South America" Number="2"/>
+  </Objective>
+  <Objective Type="Occupy">
+    <Target Continent="North America" Number="-1"/>
+    <Target Continent="Oceania" Number="2"/>
+    <Target Continent="Asia" Number="4"/>
+  </Objective>
+  <Objective Type="Occupy">
+    <Target Continent="Oceania" Number="2"/>
+    <Target Continent="Africa" Number="2"/>
+    <Target Continent="South America" Number="2"/>
+    <Target Continent="Europe" Number="3"/>
+    <Target Continent="North America" Number="4"/>
+    <Target Continent="Asia" Number="3"/>
+  </Objective>
+  <Objective Type="Occupy">
+    <Target Continent="Oceania" Number="-1"/>
+    <Target Continent="North America" Number="-1"/>
+    <Target Continent="Europe" Number="2"/>
+  </Objective>
+  <Objective Type="Occupy">
+    <Target Continent="South America" Number="-1"/>
+    <Target Continent="Africa" Number="-1"/>
+    <Target Continent="Asia" Number="4"/>
+  </Objective>
+  <Objective Type="Occupy">
+    <Target Continent="Oceania" Number="-1"/>
+    <Target Continent="Africa" Number="-1"/>
+    <Target Continent="North America" Number="5"/>
+  </Objective>
+  <Objective Type="Destroy">
+    <Target Color="Black"/>
+  </Objective>
+  <Objective Type="Destroy">
+    <Target Color="Red"/>
+  </Objective>
+  <Objective Type="Destroy">
+    <Target Color="Yellow"/>
+  </Objective>
+  <Objective Type="Destroy">
+    <Target Color="Green"/>
+  </Objective>
+  <Objective Type="Destroy">
+    <Target Color="Blue"/>
+  </Objective>
+  <Objective Type="Destroy">
+    <Target Color="Orange"/>
+  </Objective>
+</Objectives>

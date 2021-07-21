@@ -10,12 +10,12 @@ namespace TEG
     {
         private void InternalIncorporateTroops(Player player)
         {
-            InternalAddTroops(AddTroops(player, Math.Max(player.Countries.Count / 2, 3))); //Add troops equal to half of occupied countries.
+            AddTroops(player, Math.Max(player.Countries.Count / 2, 3)); //Add troops equal to half of occupied countries.
             foreach (var continent in ContinentManager.Continents)
             {
                 if (ContinentManager.PlayerInContinent(player, continent, continent.Size))
                 {
-                    InternalAddTroops(ContinentBonus(player, continent, continent.Bonus));
+                    //InternalAddTroops(ContinentBonus(player, continent, continent.Bonus));
                 }
             }
         }

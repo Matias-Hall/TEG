@@ -8,12 +8,17 @@ namespace TEG
 {
     abstract partial class BaseTEGRunner
     {
-        protected abstract Dictionary<Country, int> AddTroops(Player player, int troopsAvailable);
-        private void InternalAddTroops(Dictionary<Country, int> countries) //Assigns the troops to countries in one player.
+        private void AddTroops(Player player, int troopsAvailable)
         {
+            countryRenderer.RenderCountries(player, player.Countries);
+            var countries = troopQuery.ChooseCountry(player, player.Countries, troopsAvailable);
+            if (countries.Values.ToList().Sum() != troopsAvailable)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             foreach (var c in countries)
             {
-                c.Key.AddTroops(c.Value); //Finds the country in the player's country list by name and adds the specified amount of troops.
+                c.Key.AddTroops(c.Value);
             }
         }
     }

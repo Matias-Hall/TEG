@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEG
 {
-    class Objective
+    public class Objective
     {
         private ObjectiveManager.Target commonTarget;
         private List<ObjectiveManager.Target> targets = new List<ObjectiveManager.Target>();

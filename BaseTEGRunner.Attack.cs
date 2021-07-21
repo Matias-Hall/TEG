@@ -60,5 +60,24 @@ namespace TEG
         }
         protected abstract void AttackResults(bool victory, List<int> attackingDice, List<int> defendingDice); //Feeds results of battle to render, either by command line or any other way.
         protected abstract int QueryTransferOfTroops(int possibleTroops); //Asks for number of troops to transfer to a newly conquered country.
+        private void TempAttack(Player player)
+        {
+            var options = new Dictionary<Country, List<Country>>();
+            foreach (Country c in player.Countries)
+            {
+                if (c.ArmySize > 1)
+                {
+                    List<Country> countryToAttack = (from k in c.Neighbors
+                                                     where k.ControllingColor != player.PlayerColor
+                                                     select k).ToList();
+                    if (countryToAttack.Count > 0)
+                    {
+                        options.Add(c, countryToAttack);
+                    }
+                }
+            }
+            countryRenderer.RenderFromToCountries(player, options);
+            
+        }
     }
 }

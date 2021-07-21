@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace TEG
 {
-    static class CountryManager
+    public static class CountryManager
     {
         private static Dictionary<string, Country> countries = new Dictionary<string, Country>();
         public static Country CountryFromName(string name)

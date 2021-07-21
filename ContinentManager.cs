@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace TEG
 {
-    static class ContinentManager
+    public static class ContinentManager
     {
         public static List<Continent> Continents { get => continents; }
         private static List<Continent> continents;

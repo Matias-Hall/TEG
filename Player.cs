@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TEG
 {
-    class Player
+    public class Player
     {
         public TEGColor PlayerColor { get; init; }
         public List<Country> Countries

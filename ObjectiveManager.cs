@@ -10,7 +10,7 @@ namespace TEG
     /// <summary>
     /// Converts Objective structs to strings and checks whether objectives have been achieved when called.
     /// </summary>
-    static class ObjectiveManager
+    public static class ObjectiveManager
     {
         public delegate bool Target(Player player);
         static XmlNodeList objectives;

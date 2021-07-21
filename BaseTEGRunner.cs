@@ -6,11 +6,26 @@ using System.Threading.Tasks;
 
 namespace TEG
 {
-    abstract partial class BaseTEGRunner
+    public abstract partial class BaseTEGRunner
     {
+        private ICountryRender countryRenderer;
+        private ITroopQuery troopQuery;
+        private IAnnouncement announcements;
         public BaseTEGRunner(int playerNum)
         {
             PlayerManager.LoadPlayers(playerNum);
+        }
+        public void AddCountryRenderer(ICountryRender countryR)
+        {
+            countryRenderer = countryR;
+        }
+        public void AddTroopQuery(ITroopQuery troopQ)
+        {
+            troopQuery = troopQ;
+        }
+        public void AddAnnouncements(IAnnouncement announcement)
+        {
+            announcements = announcement;
         }
         public void Run()
         {
@@ -20,12 +35,12 @@ namespace TEG
             }
             foreach (var player in PlayerManager.Players)
             {
-                InternalAddTroops(AddTroops(player, 5));
+                AddTroops(player, 5);
 
             }
             foreach (var player in PlayerManager.Players)
             {
-                InternalAddTroops(AddTroops(player, 3));
+                AddTroops(player, 3);
             }
             foreach (var player in PlayerManager.Players)
             {

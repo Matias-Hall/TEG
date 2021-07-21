@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEG
 {
-    record Continent
+    public record Continent
     {
         public string Name { get; init; }
         public int Bonus { get; init; }

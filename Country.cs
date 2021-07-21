@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TEG
 {
-    class Country
+    public class Country
     {
         public int ArmySize { get => armySize; }
         private int armySize;

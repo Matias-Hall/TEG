@@ -20,7 +20,7 @@ namespace TEG
                     if (c.ArmySize > 1)
                     {
                         List<Country> countryToAttack = (from k in c.Neighbors
-                                                         where k.ControllingColor == player.PlayerColor
+                                                         where k.ControllingColor == player.PlayerColor && !k.ReceivedTroops
                                                          select k).ToList();
                         if (countryToAttack.Count > 0)
                         {

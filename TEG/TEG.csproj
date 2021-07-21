@@ -6,12 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="ArrayExtensions">
-      <HintPath>..\ArrayExtensions\ArrayExtensions\bin\Release\netcoreapp3.1\ArrayExtensions.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -29,6 +23,12 @@
   <ItemGroup>
     <PackageReference Include="Spectre.Console" Version="0.41.0" />
     <PackageReference Include="Spectre.Console.ImageSharp" Version="0.41.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ArrayExtensions">
+      <HintPath>..\..\source\repos\ArrayExtensions\ArrayExtensions\bin\Release\netcoreapp3.1\ArrayExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

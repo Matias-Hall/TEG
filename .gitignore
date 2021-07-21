@@ -1,3 +1,7 @@
-.vs/
-bin/
-obj/
+/TEG/.vs/
+/TEG/bin/
+/TEG/obj/
+/TEGCMDLineRender/.vs/
+/TEGCMDLineRender/bin/
+/TEGCMDLineRender/obj/
+

@@ -19,50 +19,6 @@ namespace TEGCMDLineRender
             Console.ReadKey(true);
             Console.Clear();
         }
-        protected override (Country from, Country to, int troopNumber) RegroupTroops(Player player)
-        {
-            AnsiConsole.MarkupLine($"[{player.PlayerColor.ToSpectreColor()}]{player.PlayerColor}[/] regroup!");
-            #region Creates display of possible regoupings
-            Tree possibilities = new Tree("Possible regrouping");
-            List<string> possibleCountriesFrom = new List<string>();
-            foreach (Country c in player.Countries)
-            {
-                List<Country> neighbors = c.Neighbors.Where(x => x.ControllingColor == player.PlayerColor).ToList();
-                if (c.ArmySize > 1 && !c.ReceivedTroops && neighbors.Count > 0)
-                {
-                    possibleCountriesFrom.Add(c.CountryName);
-                    Table a = new Table().AddColumn("").AddColumn("").HideHeaders();
-                    a.AddRow(c.CountryName, c.ArmySize.ToString());
-                    TreeNode node = possibilities.AddNode(a);
-                    Table b = new Table().AddColumn("To").AddColumn("Current Troops").MinimalBorder();
-                    foreach (Country d in neighbors)
-                    {
-                        b.AddRow(d.CountryName, d.ArmySize.ToString());
-                    }
-                    node.AddNode(b);
-                }
-            }
-            #endregion
-            if (possibleCountriesFrom.Count > 0)
-            {
-                AnsiConsole.Render(possibilities);
-                if (AnsiConsole.Confirm("Regroup?"))
-                {
-                    Country from = CountryManager.CountryFromName(AnsiConsole.Prompt(new TextPrompt<string>("Country to take from?").AddChoices(possibleCountriesFrom)));
-                    Country to = CountryManager.CountryFromName(AnsiConsole.Prompt(new TextPrompt<string>("Country to send to?").AddChoices(from.Neighbors.Where(x => x.ControllingColor == player.PlayerColor).Select(x => x.CountryName))));
-                    //int n = QueryTransferOfTroops(from.ArmySize - 1);
-                    return (from, to, 1);
-                }
-            }
-            else
-            {
-                Console.WriteLine("No more regrouping possible");
-            }
-            return (null, null, 0);
-
-
-            throw new NotImplementedException();
-        }
         protected override Dictionary<Country, int> ContinentBonus(Player player, Continent continent, int troopsAvailable)
         {
             AnsiConsole.MarkupLine($"[{player.PlayerColor.ToSpectreColor()}]{player.PlayerColor}[/]: add [blue]{troopsAvailable}[/] troops to countries in {continent.Name}");

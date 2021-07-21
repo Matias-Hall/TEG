@@ -23,7 +23,7 @@ namespace TEGCMDLineRender
         }
         public void RenderFromToCountries(Player player, Dictionary<Country, List<Country>> countries)
         {
-            Tree possibilities = new Tree("Possible attacks");
+            Tree possibilities = new Tree("Possible moves");
             foreach (var c in countries)
             {
                 if (c.Key.ArmySize > 1)
@@ -35,7 +35,7 @@ namespace TEGCMDLineRender
                         a.AddRow(c.Key.CountryName, c.Key.ArmySize.ToString());
                         var node = possibilities.AddNode(a);
                         Table b = new Table().MinimalBorder();
-                        b.AddColumn("Enemy country");
+                        b.AddColumn("Target country");
                         b.AddColumn("Troops");
                         foreach (Country other in countryToAttack)
                         {

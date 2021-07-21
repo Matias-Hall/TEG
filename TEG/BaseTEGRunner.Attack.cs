@@ -11,8 +11,7 @@ namespace TEG
         private void Attack(Player player)
         {
             bool continueAttacking = true;
-            Country from;
-            Country to;
+            Country from, to;
             while (continueAttacking)
             {
                 var options = new Dictionary<Country, List<Country>>();
@@ -56,7 +55,7 @@ namespace TEG
                         {
                             Player prevOwner = PlayerManager.PlayerFromColor(to.ControllingColor);
                             to.ControllingColor = player.PlayerColor;
-                            int transfer = attackQuery.QueryTransferOfTroops(from.ArmySize - 1);
+                            int transfer = troopQuery.QueryTransferOfTroops(Math.Min(from.ArmySize - 1, 3));
                             to.AddTroops(transfer);
                             from.AddTroops(-transfer);
                             bool wonGame = false;

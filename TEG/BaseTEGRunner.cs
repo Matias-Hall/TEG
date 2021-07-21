@@ -50,16 +50,18 @@ namespace TEG
             foreach (var player in PlayerManager.Players)
             {
                 Attack(player);
-                InternalRegroupTroops(player);
+                RegroupTroops(player);
             }
+            CountryManager.ResetReceivedTroops();
             while (Winner == null)
             {
                 foreach (var player in PlayerManager.Players)
                 {
                     InternalIncorporateTroops(player);
                     Attack(player);
-                    InternalRegroupTroops(player);
+                    RegroupTroops(player);
                 }
+                CountryManager.ResetReceivedTroops();
             }
         }
     }

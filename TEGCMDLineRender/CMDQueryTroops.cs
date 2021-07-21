@@ -46,5 +46,37 @@ namespace TEGCMDLineRender
             }
             return countriesToAdd;
         }
+        public (bool regroup, Country from, Country to) ChooseFromToCountry(Player player, Dictionary<Country, List<Country>> options)
+        {
+            AnsiConsole.MarkupLine($"[{player.PlayerColor.ToSpectreColor()}]{player.PlayerColor}[/] regroup!");
+            if (AnsiConsole.Confirm("Regroup?"))
+            {
+                Country from = CountryManager.CountryFromName(AnsiConsole.Prompt(new TextPrompt<string>("Country to take from?").AddChoices(options.Keys.Select(x => x.CountryName))));
+                Country to = CountryManager.CountryFromName(AnsiConsole.Prompt(new TextPrompt<string>("Country to send to?").AddChoices(from.Neighbors.Where(x => x.ControllingColor == player.PlayerColor).Select(x => x.CountryName))));
+                return (true, from, to);
+            }
+            else
+            {
+                return (false, null, null);
+            }
+        }
+        public int QueryTransferOfTroops(int possibleTroops)
+        {
+            return AnsiConsole.Prompt(new TextPrompt<int>("Number of troops to transfer?").Validate(num =>
+            {
+                if (num > possibleTroops)
+                {
+                    return ValidationResult.Error($"[red]Not enough troops available.[/] [blue]{possibleTroops} left[/]");
+                }
+                else if (num < 0)
+                {
+                    return ValidationResult.Error($"[red]Must transfer at least 1 troop.[/]");
+                }
+                else
+                {
+                    return ValidationResult.Success();
+                }
+            }));
+        }
     }
 }

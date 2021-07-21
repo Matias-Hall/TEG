@@ -24,23 +24,5 @@ namespace TEGCMDLineRender
                 return (false, null, null);
             }
         }
-        public int QueryTransferOfTroops(int possibleTroops)
-        {
-            return AnsiConsole.Prompt(new TextPrompt<int>("Number of troops to transfer?").Validate(num =>
-            {
-                if (num > possibleTroops)
-                {
-                    return ValidationResult.Error($"[red]Not enough troops available.[/] [blue]{possibleTroops} left[/]");
-                }
-                else if (num < 0)
-                {
-                    return ValidationResult.Error($"[red]Must transfer at least 1 troop.[/]");
-                }
-                else
-                {
-                    return ValidationResult.Success();
-                }
-            }));
-        }
     }
 }

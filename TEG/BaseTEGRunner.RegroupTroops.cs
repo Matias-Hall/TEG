@@ -8,18 +8,39 @@ namespace TEG
 {
     abstract partial class BaseTEGRunner
     {
-        protected abstract (Country from, Country to, int troopNumber) RegroupTroops(Player player); //Asks for troops to move from one country to another.
-        private void InternalRegroupTroops(Player player)
+        public void RegroupTroops(Player player)
         {
-            (Country from, Country to, int troopNumber) = RegroupTroops(player);
-            while (from != null)
+            bool continueRegrouping = true;
+            Country from, to;
+            while (continueRegrouping)
             {
-                from.AddTroops(-troopNumber);
-                to.AddTroops(troopNumber);
-                to.ReceivedTroops = true;
-                (from, to, troopNumber) = RegroupTroops(player);
+                var options = new Dictionary<Country, List<Country>>();
+                foreach (Country c in player.Countries)
+                {
+                    if (c.ArmySize > 1)
+                    {
+                        List<Country> countryToAttack = (from k in c.Neighbors
+                                                         where k.ControllingColor == player.PlayerColor
+                                                         select k).ToList();
+                        if (countryToAttack.Count > 0)
+                        {
+                            options.Add(c, countryToAttack);
+                        }
+                    }
+                }
+                countryRenderer.RenderFromToCountries(player, options);
+                if (options.Count > 0)
+                {
+                    (continueRegrouping, from, to) = troopQuery.ChooseFromToCountry(player, options);
+                    if (continueRegrouping)
+                    {
+                        int n = troopQuery.QueryTransferOfTroops(from.ArmySize - 1);
+                        from.AddTroops(-n);
+                        to.AddTroops(n);
+                        to.ReceivedTroops = true;
+                    }
+                }
             }
-
         }
     }
 }

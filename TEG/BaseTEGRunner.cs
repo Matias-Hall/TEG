@@ -11,6 +11,7 @@ namespace TEG
         private ICountryRender countryRenderer;
         private ITroopQuery troopQuery;
         private IAnnouncement announcements;
+        private IAttackQuery attackQuery;
         public BaseTEGRunner(int playerNum)
         {
             PlayerManager.LoadPlayers(playerNum);
@@ -26,6 +27,10 @@ namespace TEG
         public void AddAnnouncements(IAnnouncement announcement)
         {
             announcements = announcement;
+        }
+        public void AddAttackQuery(IAttackQuery attackQuery)
+        {
+            this.attackQuery = attackQuery;
         }
         public void Run()
         {
@@ -44,7 +49,7 @@ namespace TEG
             }
             foreach (var player in PlayerManager.Players)
             {
-                InternalAttack(player);
+                Attack(player);
                 InternalRegroupTroops(player);
             }
             while (Winner == null)
@@ -52,7 +57,7 @@ namespace TEG
                 foreach (var player in PlayerManager.Players)
                 {
                     InternalIncorporateTroops(player);
-                    InternalAttack(player);
+                    Attack(player);
                     InternalRegroupTroops(player);
                 }
             }

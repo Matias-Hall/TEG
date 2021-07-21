@@ -19,83 +19,6 @@ namespace TEGCMDLineRender
             Console.ReadKey(true);
             Console.Clear();
         }
-        
-        protected override (Country attackingCountry, Country defendingCountry) Attack(Player player)
-        {
-            AnsiConsole.Render(new FigletText("ATTACK!").Color(player.PlayerColor.ToSpectreColor()));
-            #region Creates display of possible attacks
-            Tree possibilities = new Tree("Possible attacks");
-            List<string> possibleCountriesToAttackFrom = new List<string>();
-            foreach (Country c in player.Countries)
-            {
-                if (c.ArmySize > 1)
-                {
-                    List<Country> countryToAttack = (from k in c.Neighbors
-                                                     where k.ControllingColor != player.PlayerColor
-                                                     select k).ToList();
-                    if (countryToAttack.Count > 0)
-                    {
-                        possibleCountriesToAttackFrom.Add(c.CountryName);
-                        Table a = new Table().AddColumn("").AddColumn("").HideHeaders();
-                        a.AddRow(c.CountryName, c.ArmySize.ToString());
-                        var node = possibilities.AddNode(a);
-                        Table b = new Table().MinimalBorder();
-                        b.AddColumn("Enemy country");
-                        b.AddColumn("Troops");
-                        foreach (Country other in countryToAttack)
-                        {
-                            b.AddRow($"[{other.ControllingColor.ToSpectreColor()}]{other.CountryName}[/]", other.ArmySize.ToString());
-                        }
-                        node.AddNode(b);
-                    }
-                }
-            }
-
-            #endregion
-            if (possibleCountriesToAttackFrom.Count > 0)
-            {
-                AnsiConsole.Render(possibilities);
-                AnsiConsole.MarkupLine($"[{player.PlayerColor.ToSpectreColor()}]{player.PlayerColor}[/] attack!");
-                if (AnsiConsole.Confirm("Attack?"))
-                {
-                    Country attacking = CountryManager.CountryFromName(AnsiConsole.Prompt(new TextPrompt<string>("Country to attack from?").AddChoices(possibleCountriesToAttackFrom).HideChoices()));
-                    Country attacked = CountryManager.CountryFromName(AnsiConsole.Prompt(new TextPrompt<string>("Country to attack?").AddChoices(attacking.Neighbors.Where(x => x.ControllingColor != player.PlayerColor).Select(x => x.CountryName)).HideChoices()));
-                    return (attacking, attacked);
-                }
-            }
-            else
-            {
-                Console.WriteLine("No possible attacks!");
-            }
-            return (null, null);
-        }
-        protected override void AttackResults(bool victory, List<int> attackingDice, List<int> defendingDice)
-        {
-            Console.WriteLine(CMDLineDiceRenderer.NumToDice(attackingDice));
-            AnsiConsole.Render(new FigletText("VS"));
-            Console.WriteLine(CMDLineDiceRenderer.NumToDice(defendingDice));
-            if (victory) AnsiConsole.MarkupLine($"Country [purple]conquered[/]");
-            else AnsiConsole.MarkupLine($"Country remains [purple]free[/]");
-            Console.ReadKey(true);
-        }
-        protected override int QueryTransferOfTroops(int possibleTroops)
-        {
-            return AnsiConsole.Prompt(new TextPrompt<int>("Number of troops to transfer?").Validate(num =>
-            {
-                if (num  > possibleTroops)
-                {
-                    return ValidationResult.Error($"[red]Not enough troops available.[/] [blue]{possibleTroops} left[/]");
-                }
-                else if (num < 0)
-                {
-                    return ValidationResult.Error($"[red]Negative numbers not allowed.[/]");
-                }
-                else
-                {
-                    return ValidationResult.Success();
-                }
-            }));
-        }
         protected override (Country from, Country to, int troopNumber) RegroupTroops(Player player)
         {
             AnsiConsole.MarkupLine($"[{player.PlayerColor.ToSpectreColor()}]{player.PlayerColor}[/] regroup!");
@@ -127,8 +50,8 @@ namespace TEGCMDLineRender
                 {
                     Country from = CountryManager.CountryFromName(AnsiConsole.Prompt(new TextPrompt<string>("Country to take from?").AddChoices(possibleCountriesFrom)));
                     Country to = CountryManager.CountryFromName(AnsiConsole.Prompt(new TextPrompt<string>("Country to send to?").AddChoices(from.Neighbors.Where(x => x.ControllingColor == player.PlayerColor).Select(x => x.CountryName))));
-                    int n = QueryTransferOfTroops(from.ArmySize - 1);
-                    return (from, to, n);
+                    //int n = QueryTransferOfTroops(from.ArmySize - 1);
+                    return (from, to, 1);
                 }
             }
             else

@@ -19,9 +19,14 @@ namespace TEGCMDLineRender
         {
             //AnsiConsole.Render(new CanvasImage(@"C:\Users\matia\source\repos\TEG\Symbol.png"));
             CMDLineTEGRunner r = new CMDLineTEGRunner(3);
-            CMDAddTroops addTroops = new CMDAddTroops();
-            r.AddCountryRenderer(addTroops);
-            r.AddTroopQuery(addTroops);
+            CMDCountryRender countryRender = new CMDCountryRender();
+            r.AddCountryRenderer(countryRender);
+            CMDQueryTroops troopQuery = new CMDQueryTroops();
+            r.AddTroopQuery(troopQuery);
+            CMDAnnouncements announcements = new CMDAnnouncements();
+            r.AddAnnouncements(announcements);
+            CMDQueryAttack attackQuery = new CMDQueryAttack();
+            r.AddAttackQuery(attackQuery);
             Console.Clear();
             r.Run();
         }

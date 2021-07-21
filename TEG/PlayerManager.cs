@@ -13,7 +13,7 @@ namespace TEG
         public static void LoadPlayers(int playerNum)
         {
             List<Player> players = new List<Player>();
-            List<int> nums = Enumerable.Range(1, ObjectiveManager.ObjNum).ToList().Shuffle().ToList(); //Starts from 1 since 0 is the common objective.
+            List<int> nums = Enumerable.Range(1, ObjectiveManager.ObjNum - 1).ToList().Shuffle().ToList(); //Starts from 1 since 0 is the common objective.
             for (int i = 0; i < playerNum; i++)
             {
                 players.Add(new Player((TEGColor)i, new Objective(nums[i])));

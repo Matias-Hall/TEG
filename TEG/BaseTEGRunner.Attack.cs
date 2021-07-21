@@ -70,8 +70,7 @@ namespace TEG
                             }
                             if (wonGame)
                             {
-                                Winner = player;
-                                Finish();
+                                announcements.Finish(player);
                             }
                         }
                     }

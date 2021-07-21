@@ -19,5 +19,20 @@ namespace TEGCMDLineRender
             else AnsiConsole.MarkupLine($"Country remains [purple]free[/]");
             Console.ReadKey(true);
         }
+        public void ShowObjective(Player player, Objective objective)
+        {
+            AnsiConsole.MarkupLine($"[{player.PlayerColor.ToSpectreColor()}]{player.PlayerColor}[/] objective:");
+            Console.WriteLine(ObjectiveManager.ObjectiveToString(objective));
+            Console.Write("Delete secret");
+            Console.ReadKey(true);
+            Console.Clear();
+        }
+        public void Finish(Player player)
+        {
+            AnsiConsole.Render(new FigletText($"{player.PlayerColor} wins!").Color(player.PlayerColor.ToSpectreColor()));
+            AnsiConsole.MarkupLine($"Objective:\n{ObjectiveManager.ObjectiveToString(player.PlayerObjective)} Accomplished!");
+            player.Countries.ForEach(x => Console.WriteLine(x.CountryName));
+            Environment.Exit(0);
+        }
     }
 }

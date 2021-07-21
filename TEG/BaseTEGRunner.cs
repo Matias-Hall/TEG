@@ -36,7 +36,7 @@ namespace TEG
         {
             foreach (var player in PlayerManager.Players)
             {
-                ShowObjective(player);
+                announcements.ShowObjective(player, player.PlayerObjective);
             }
             foreach (var player in PlayerManager.Players)
             {
@@ -53,7 +53,7 @@ namespace TEG
                 RegroupTroops(player);
             }
             CountryManager.ResetReceivedTroops();
-            while (Winner == null)
+            while (true)
             {
                 foreach (var player in PlayerManager.Players)
                 {

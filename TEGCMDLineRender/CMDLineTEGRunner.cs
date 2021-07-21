@@ -11,14 +11,6 @@ namespace TEGCMDLineRender
     class CMDLineTEGRunner : BaseTEGRunner
     {
         public CMDLineTEGRunner(int playerNum) : base(playerNum) { }
-        protected override void ShowObjective(Player player)
-        {
-            AnsiConsole.MarkupLine($"[{player.PlayerColor.ToSpectreColor()}]{player.PlayerColor}[/] objective:");
-            Console.WriteLine(ObjectiveManager.ObjectiveToString(player.PlayerObjective));
-            Console.Write("Delete secret");
-            Console.ReadKey(true);
-            Console.Clear();
-        }
         protected override Dictionary<Country, int> ContinentBonus(Player player, Continent continent, int troopsAvailable)
         {
             AnsiConsole.MarkupLine($"[{player.PlayerColor.ToSpectreColor()}]{player.PlayerColor}[/]: add [blue]{troopsAvailable}[/] troops to countries in {continent.Name}");
@@ -65,13 +57,6 @@ namespace TEGCMDLineRender
                 }
             }
             return countriesToAdd;
-        }
-        protected override void Finish()
-        {
-            AnsiConsole.Render(new FigletText($"{Winner.PlayerColor} wins!").Color(Winner.PlayerColor.ToSpectreColor()));
-            AnsiConsole.MarkupLine($"Objective:\n{ObjectiveManager.ObjectiveToString(Winner.PlayerObjective)} Accomplished!");
-            Winner.Countries.ForEach(x => Console.WriteLine(x.CountryName));
-            Environment.Exit(0);
         }
     }
 }

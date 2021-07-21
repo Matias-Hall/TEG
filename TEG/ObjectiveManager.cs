@@ -21,7 +21,7 @@ namespace TEG
             doc.LoadXml(Properties.Resources.Objectives);
             objectives = doc.DocumentElement.ChildNodes;
         }
-        public static void AddTargets(Objective objective)
+        public static void AddTargets(Player player, Objective objective)
         {
             int commonGoal = int.Parse(objectives.Item(0).FirstChild.Attributes.GetNamedItem("Number").Value); //Number of countries needed to win via common objective.
             Target common = x => x.Countries.Count >= commonGoal;
@@ -45,6 +45,21 @@ namespace TEG
                     }
                     objective.LinkTarget(target);
                 }
+            }
+            else
+            {
+                TEGColor toDestroy = TEGColor.FromString(objectives.Item(objective.Id).FirstChild.Attributes.GetNamedItem("Color").Value);
+                Target target;
+                if (PlayerManager.PlayerFromColor(toDestroy) != null && toDestroy != player.PlayerColor) //If the color exists and is not the player itself.
+                {
+                    target = x => x.DestroyedPlayers.Contains(toDestroy);
+                }
+                else
+                {
+                    toDestroy = (TEGColor)((player.PlayerColor.Id + 1) % PlayerManager.Players.Count); //Switches to the next color over, going back to black if it's the last one of all players.
+                    target = x => x.DestroyedPlayers.Contains(toDestroy);
+                }
+                objective.LinkTarget(target);
             }
 
         }

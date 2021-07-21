@@ -21,5 +21,7 @@ namespace TEG
             PlayerColor = c;
             PlayerObjective = o;
         }
+        public List<TEGColor> DestroyedPlayers { get => destroyedPlayers; }
+        private List<TEGColor> destroyedPlayers = new List<TEGColor>();
     }
 }

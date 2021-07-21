@@ -19,6 +19,10 @@ namespace TEG
                 players.Add(new Player((TEGColor)i, new Objective(nums[i])));
             }
             allPlayers = CountryManager.SortCountries(players);
+            foreach (var player in players)
+            {
+                ObjectiveManager.AddTargets(player, player.PlayerObjective);
+            }
         }
         public static Player? PlayerFromColor(TEGColor color)
         {

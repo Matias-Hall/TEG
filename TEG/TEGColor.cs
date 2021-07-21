@@ -1,4 +1,4 @@
-﻿using Spectre.Console;
+﻿using System;
 
 namespace TEG
 {
@@ -27,6 +27,19 @@ namespace TEG
                 4 => "Blue",
                 5 => "Orange",
                 _ => "Error at conversion",
+            };
+        }
+        public static TEGColor FromString(string name)
+        {
+            return name switch
+            {
+                "Black" => Black,
+                "Red" => Red,
+                "Yellow" => Yellow,
+                "Green" => Green,
+                "Blue" => Blue,
+                "Orange" => Orange,
+                _ => throw new ArgumentOutOfRangeException("Not a valid color name."),
             };
         }
         public override string ToString()

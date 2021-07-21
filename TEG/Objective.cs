@@ -14,7 +14,6 @@ namespace TEG
         public Objective (int id)
         {
             Id = id;
-            ObjectiveManager.AddTargets(this);
         }
         public void LinkTarget(ObjectiveManager.Target target)
         {
@@ -26,7 +25,7 @@ namespace TEG
         }
         public bool ObjectiveAccomplished(Player player)
         {
-            return commonTarget(player) || targets.TrueForAll(x => x(player)); //Will return true if the common target is reached or if all other targets of the specific objective are reached.
+            return commonTarget(player) || targets.All(x => x(player)); //Will return true if the common target is reached or if all other targets of the specific objective are reached.
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TEG
 {
-    abstract partial class BaseTEGRunner
+    partial class BaseTEGRunner
     {
-        public void RegroupTroops(Player player)
+        private void RegroupTroops(Player player)
         {
             bool continueRegrouping = true;
             Country from, to;

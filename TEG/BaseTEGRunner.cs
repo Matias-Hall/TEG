@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEG
 {
-    public abstract partial class BaseTEGRunner
+    public partial class BaseTEGRunner
     {
         private ICountryRender countryRenderer;
         private ITroopQuery troopQuery;
@@ -57,7 +57,7 @@ namespace TEG
             {
                 foreach (var player in PlayerManager.Players)
                 {
-                    InternalIncorporateTroops(player);
+                    IncorporateTroops(player);
                     Attack(player);
                     RegroupTroops(player);
                 }

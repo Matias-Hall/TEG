@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEG
 {
-    abstract partial class BaseTEGRunner
+    partial class BaseTEGRunner
     {
         private void Attack(Player player)
         {

@@ -15,7 +15,7 @@ namespace TEGCMDLineRender
             Table t = new Table();
             t.AddColumn("Countries available");
             t.AddColumn("Troops");
-            foreach (var c in player.Countries)
+            foreach (var c in countries)
             {
                 t.AddRow(c.CountryName, c.ArmySize.ToString());
             }

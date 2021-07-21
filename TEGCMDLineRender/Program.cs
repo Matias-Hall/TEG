@@ -18,7 +18,7 @@ namespace TEGCMDLineRender
         static void Main(string[] args)
         {
             //AnsiConsole.Render(new CanvasImage(@"C:\Users\matia\source\repos\TEG\Symbol.png"));
-            CMDLineTEGRunner r = new CMDLineTEGRunner(3);
+            BaseTEGRunner r = new BaseTEGRunner(2);
             CMDCountryRender countryRender = new CMDCountryRender();
             r.AddCountryRenderer(countryRender);
             CMDQueryTroops troopQuery = new CMDQueryTroops();

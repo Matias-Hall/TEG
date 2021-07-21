@@ -6,20 +6,31 @@ using System.Threading.Tasks;
 
 namespace TEG
 {
-    abstract partial class BaseTEGRunner
+    partial class BaseTEGRunner
     {
-        private void InternalIncorporateTroops(Player player)
+        private void IncorporateTroops(Player player)
         {
             AddTroops(player, Math.Max(player.Countries.Count / 2, 3)); //Add troops equal to half of occupied countries.
             foreach (var continent in ContinentManager.Continents)
             {
                 if (ContinentManager.PlayerInContinent(player, continent, continent.Size))
                 {
-                    //InternalAddTroops(ContinentBonus(player, continent, continent.Bonus));
+                    ContinentBonus(player, continent);
                 }
             }
         }
-        protected abstract Dictionary<Country, int> ContinentBonus(Player player, Continent continent, int troopsAvailable);
-
+        private void ContinentBonus(Player player, Continent continent)
+        {
+            countryRenderer.RenderCountries(player, player.Countries.Where(x => x.Continent == continent).ToList());
+            var countries = troopQuery.ChooseCountry(player, player.Countries.Where(x => x.Continent == continent).ToList(), continent.Bonus);
+            if (countries.Values.ToList().Sum() != continent.Bonus)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            foreach (var c in countries)
+            {
+                c.Key.AddTroops(c.Value);
+            }
+        }
     }
 }

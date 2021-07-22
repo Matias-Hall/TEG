@@ -11,7 +11,14 @@ namespace TEG
         {
             get
             {
-                return CountryManager.CountiesFromColor(PlayerColor);
+                return CountryManager.CountriesFromColor(PlayerColor);
+            }
+        }
+        public List<CountryCard> Cards
+        {
+            get
+            {
+                return CountryCardManager.CountryCards
             }
         }
         public Objective PlayerObjective { get; init; }

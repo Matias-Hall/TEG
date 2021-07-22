@@ -13,7 +13,7 @@ namespace TEG
         {
             return countries.GetValueOrDefault(name) ?? throw new ArgumentOutOfRangeException("Country not found.");
         }
-        public static List<Country> CountiesFromColor(TEGColor color)
+        public static List<Country> CountriesFromColor(TEGColor color)
         {
             return (from country in countries
                     where country.Value.ControllingColor == color

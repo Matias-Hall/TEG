@@ -11,7 +11,7 @@ namespace TEG
     {
         public static List<Continent> Continents { get => continents; }
         private static List<Continent> continents;
-        static ContinentManager()
+        public static void LoadContinents()
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(Properties.Resources.Countries);

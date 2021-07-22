@@ -15,7 +15,7 @@ namespace TEG
         public delegate bool Target(Player player);
         static XmlNodeList objectives;
         public static int ObjNum { get => objectives.Count; }
-        static ObjectiveManager()
+        public static void LoadObjectives()
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(Properties.Resources.Objectives);

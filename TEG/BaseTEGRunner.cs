@@ -14,6 +14,10 @@ namespace TEG
         private IAttackQuery attackQuery;
         public BaseTEGRunner(int playerNum)
         {
+            CountryManager.LoadCountries();
+            ContinentManager.LoadContinents();
+            ObjectiveManager.LoadObjectives();
+            CountryCardManager.LoadCountryCards();
             PlayerManager.LoadPlayers(playerNum);
         }
         public void AddCountryRenderer(ICountryRender countryR)

@@ -23,7 +23,7 @@ namespace TEG
         {
             countries.Values.ToList().ForEach(x => x.ReceivedTroops = false);
         }
-        static CountryManager()
+        public static void LoadCountries()
         {
             XmlDocument countriesDoc = new XmlDocument();
             countriesDoc.LoadXml(Properties.Resources.Countries);

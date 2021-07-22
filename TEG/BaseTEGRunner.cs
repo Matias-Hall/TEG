@@ -14,8 +14,8 @@ namespace TEG
         private IAttackQuery attackQuery;
         public BaseTEGRunner(int playerNum)
         {
-            CountryManager.LoadCountries();
             ContinentManager.LoadContinents();
+            CountryManager.LoadCountries();
             ObjectiveManager.LoadObjectives();
             CountryCardManager.LoadCountryCards();
             PlayerManager.LoadPlayers(playerNum);

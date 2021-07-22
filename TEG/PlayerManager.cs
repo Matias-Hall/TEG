@@ -24,9 +24,11 @@ namespace TEG
                 ObjectiveManager.AddTargets(player, player.PlayerObjective);
             }
         }
+#nullable enable
         public static Player? PlayerFromColor(TEGColor color)
         {
             return allPlayers.Find(x => x.PlayerColor == color);
         }
+#nullable restore
     }
 }

@@ -17,7 +17,6 @@ namespace TEG
             ContinentManager.LoadContinents();
             CountryManager.LoadCountries();
             ObjectiveManager.LoadObjectives();
-            CountryCardManager.LoadCountryCards();
             PlayerManager.LoadPlayers(playerNum);
         }
         public void AddCountryRenderer(ICountryRender countryR)

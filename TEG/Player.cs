@@ -14,13 +14,6 @@ namespace TEG
                 return CountryManager.CountriesFromColor(PlayerColor);
             }
         }
-        public List<CountryCard> Cards
-        {
-            get
-            {
-                return CountryCardManager.CountryCards
-            }
-        }
         public Objective PlayerObjective { get; init; }
         public bool IsDestroyed { get; set; }
         public Player(TEGColor c, Objective o)

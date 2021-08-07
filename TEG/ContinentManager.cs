@@ -31,5 +31,9 @@ namespace TEG
         {
             return Continents.Where(x => x.Name == name).ToList()[0];
         }
+        public static bool ContinentExists(string name)
+        {
+            return Continents.Where(x => x.Name == name).ToList().Any();
+        }
     }
 }

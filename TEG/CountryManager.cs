@@ -19,6 +19,10 @@ namespace TEG
                     where country.Value.ControllingColor == color
                     select country.Value).ToList();
         }
+        public static bool CountryExists(string name)
+        {
+            return countries.GetValueOrDefault(name) != null;
+        }
         public static void ResetReceivedTroops() //Resets the ReceivedTroops property on all countries to false. Meant to be used at the end of a turn.
         {
             countries.Values.ToList().ForEach(x => x.ReceivedTroops = false);
